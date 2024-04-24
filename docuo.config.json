@@ -69,33 +69,15 @@
   "instances": [
     {
       "id": "default",
-      "label": "Call Kit(iOS)",
-      "path": "docs",
-      "routeBasePath": "callkit_ios"
-    },
-    {
-      "id": "callkit_android",
-      "label": "Call Kit(Android)",
-      "path": "callkit_android_docs",
-      "routeBasePath": "callkit_android"
-    },
-    {
-      "id": "callkit_flutter",
       "label": "Call Kit(Flutter)",
-      "path": "callkit_flutter_docs",
+      "path": "docs",
       "routeBasePath": "callkit_flutter"
     },
     {
-      "id": "live_streaming_kit_android",
-      "label": "Live Streaming Kit(Android)",
-      "path": "live_streaming_kit_android_docs",
-      "routeBasePath": "live_streaming_kit_android"
-    },
-    {
-      "id": "live_streaming_kit_flutter",
-      "label": "Live Streaming Kit(Flutter)",
-      "path": "live_streaming_kit_flutter_docs",
-      "routeBasePath": "live_streaming_kit_flutter"
+      "id": "callkit_ios",
+      "label": "Call Kit(iOS)",
+      "path": "callkit_flutter_ios",
+      "routeBasePath": "callkit_ios"
     }
   ]
 }

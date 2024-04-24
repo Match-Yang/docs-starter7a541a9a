@@ -19,7 +19,7 @@ flutter pub add zego_uikit_prebuilt_call
 ### Import the SDK
 
 
-Now in your Dart code, ​​​​​​​​​​​​​​​​&#8203;import the prebuilt Call Kit SDK.
+Now in your Dart code, import the prebuilt Call Kit SDK.
 
 ```dart
 ​​​​​​​​​​​​​​​​import 'package:zego_uikit_prebuilt_call/zego_uikit_prebuilt_call.dart';
@@ -31,7 +31,7 @@ Now in your Dart code, ​​​​​​​​​​​​​​​​&#8203;im
 * Go to [ZEGOCLOUD Admin Console ](https://console.zegocloud.com/), get the <code>appID</code> and <code>appSign</code> of your project.
 * Specify the <code>userID</code> and <code>userName</code> for connecting the Call Kit service.
 * Create a <code>callID</code> that represents the call you want to make.
-* <code>userID</code> and <code>callID</code> can only contain numbers, letters, and underlines &#40;&#95;&#41;.
+* <code>userID</code> and <code>callID</code> can only contain numbers, letters, and underlines (_).
 * Users that join the call with the same <code>callID</code> can talk to each other.
 
 ```dart
@@ -62,74 +62,74 @@ Now, you can make a new call by navigating to this <code>CallPage</code>.
 ### Android
 
 
-1. Modify the <code>compileSdkVersion</code> to 33 in the <code>your&#95;project/android/app/build.gradle</code> file.
+1. Modify the <code>compileSdkVersion</code> to 33 in the <code>your_project/android/app/build.gradle</code> file.
 
-<Frame width="512"  height="auto" caption="">
+<Frame width="400"  height="auto" caption="">
   <img src="https://media-resource.spreading.io/5fa3f99cda659c8c9f2907cbb0242e6c/workspace86/compile_sdk_version.png" />
 </Frame>
 
 2. Modify the <code>minSdkVersion</code> in the same file:
 
-```xml
+```gradle build.gradle
 minSdkVersion 21
 ```
 
-<Frame width="512"  height="auto" caption="">
+<Frame width="400"  height="auto" caption="">
   <img src="https://media-resource.spreading.io/5fa3f99cda659c8c9f2907cbb0242e6c/workspace86/android_min_sdk_21.png" />
 </Frame>
 
-3. Modify the <code>kotlin</code> version to &gt;&#61; 1.8.0 and the <code>gradle classpath</code> version to 7.3.0 in the <code>your&#95;project/android/app/build.gradle</code> file:
+3. Modify the <code>kotlin</code> version to >= 1.8.0 and the <code>gradle classpath</code> version to 7.3.0 in the <code>your_project/android/app/build.gradle</code> file:
 
-```xml
-   buildscript {
-       ext.kotlin_version = '1.8.0'
-       repositories {
-           google()
-           mavenCentral()
-       }
-   
-       dependencies {
-           classpath 'com.android.tools.build:gradle:7.3.0'
-           classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-   
-           // support notification
-           classpath 'com.google.gms:google-services:4.3.14'
-       }
-   }
+```gradle build.gradle
+buildscript {
+    ext.kotlin_version = '1.8.0'
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.3.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+        // support notification
+        classpath 'com.google.gms:google-services:4.3.14'
+    }
+}
 ```
 
-4. Make the <code>gradle</code> version &gt;&#61; 7.0: In the <code>your&#95;project/android/gradle/wrapper/gradle&#45;wrapper.properties</code> file, modify the <code>distributionUrl</code> to <code>https://services.gradle.org/distributions/gradle-7.4-all.zip</code>.
+4. Make the <code>gradle</code> version >= 7.0: In the <code>your_project/android/gradle/wrapper/gradle-wrapper.properties</code> file, modify the <code>distributionUrl</code> to <code>https://services.gradle.org/distributions/gradle-7.4-all.zip</code>.
 
-```xml
+```xml gradle-wrapper.properties
 distributionUrl=https\://services.gradle.org/distributions/gradle-7.4-all.zip
 ```
 
-<Frame width="512"  height="auto" caption="">
+<Frame width="400"  height="auto" caption="">
   <img src="https://media-resource.spreading.io/5fa3f99cda659c8c9f2907cbb0242e6c/workspace86/kotlin180.jpg" />
 </Frame>
 
 5. Add app permissions.
 
-Open the file <code>your&#95;project/app/src/main/AndroidManifest.xml</code>, and add the following code:
+Open the file <code>your_project/app/src/main/AndroidManifest.xml</code>, and add the following code:
 
-```xml
+```xml AndroidManifest.xml
 TODO
 
 ```
 
-<Frame width="512"  height="auto" caption="">
+<Frame width="400"  height="auto" caption="">
   <img src="https://media-resource.spreading.io/5fa3f99cda659c8c9f2907cbb0242e6c/workspace86/permission_android.png" />
 </Frame>
 
 6. Prevent code obfuscation.
 
-In your project's <code>your&#95;project &gt; android &gt; app</code> folder, create a <code>proguard&#45;rules.pro</code> file with the following content as shown below:
+In your project's <code>your_project > android > app</code> folder, create a <code>proguard-rules.pro</code> file with the following content as shown below:
 
-   ```plaintext
-   -keep class **.zego.** { *; }
-   ```
+```plaintext
+-keep class **.zego.** { *; }
+```
 
-   Add the following config code to the <code>release</code> part of the <code>your&#95;project/android/app/build.gradle</code> file.
+   Add the following config code to the <code>release</code> part of the <code>your_project/android/app/build.gradle</code> file.
 
 ```plaintext
 proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -140,7 +140,7 @@ proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pr
 
 1. Add app permissions.
 
-Open the <code>your&#95;project/ios/Podfile</code> file, and add the following to the <code>post&#95;install do |installer|</code> part:
+Open the <code>your_project/ios/Podfile</code> file, and add the following to the <code>post_install do |installer|</code> part:
 
 ```plaintext
 # Start of the permission_handler configuration
@@ -154,11 +154,11 @@ end
 # End of the permission_handler configuration
 ```
 
-<Frame width="512"  height="auto" caption="">
+<Frame width="400"  height="auto" caption="">
   <img src="https://media-resource.spreading.io/5fa3f99cda659c8c9f2907cbb0242e6c/workspace86/permission_podfile.png" />
 </Frame>
 
-2. Open the <code>your&#95;project/ios/Runner/Info.plist</code> file, and add the following to the <code>dict</code> part:
+2. Open the <code>your_project/ios/Runner/Info.plist</code> file, and add the following to the <code>dict</code> part:
 
 ```xml
 NSCameraUsageDescription
@@ -167,17 +167,17 @@ NSCameraUsageDescription
     We require microphone access to connect
 ```
 
-<Frame width="512"  height="auto" caption="">
+<Frame width="400"  height="auto" caption="">
   <img src="https://media-resource.spreading.io/5fa3f99cda659c8c9f2907cbb0242e6c/workspace86/permission_ios.jpg" />
 </Frame>
 
 3. Disable <code>Build Libraries for Distribution</code>
 
-Open the your&#95;project &gt; iOS &gt; Runner.xcworkspace file.
+Open the your_project > iOS > Runner.xcworkspace file.
 
 Select your target project, and follow the notes on the following image to disable the <code>Build Libraries for Distribution</code>.
 
-<Frame width="512"  height="auto" caption="">
+<Frame width="400"  height="auto" caption="">
   <img src="https://media-resource.spreading.io/5fa3f99cda659c8c9f2907cbb0242e6c/workspace86/call_disable_build_libraries_for_distribution.png" />
 </Frame>
 
@@ -189,7 +189,7 @@ Now you have finished all the steps!
 
 You can simply click the **Run** or **Debug** to run and test your App on your device.
 
-<Frame width="512"  height="auto" caption="">
+<Frame width="400"  height="auto" caption="">
   <img src="https://media-resource.spreading.io/5fa3f99cda659c8c9f2907cbb0242e6c/workspace86/run_flutter_project.jpg" />
 </Frame>
 

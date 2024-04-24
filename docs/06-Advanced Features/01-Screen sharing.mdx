@@ -7,7 +7,7 @@ Screen sharing refers to the process of broadcasting the contents of one screen 
 
 |                                                                                Starts screen sharing                                                                                 |                                                                             Screen shared by mobile apps                                                                             |                                                                                Screen shared by web apps                                                                                |                                                                             Landscape mode                                                                             |
 | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| <Frame width="256" height="auto" caption=""><img src="https://media-resource.spreading.io/5fa3f99cda659c8c9f2907cbb0242e6c/workspace86/conference_start_screen_share.png" /></Frame> | <Frame width="256" height="auto" caption=""><img src="https://media-resource.spreading.io/5fa3f99cda659c8c9f2907cbb0242e6c/workspace86/conference_watch_screen_share.png" /></Frame> | <Frame width="256" height="auto" caption=""><img src="https://media-resource.spreading.io/5fa3f99cda659c8c9f2907cbb0242e6c/workspace86/conference_watch_web_screenshare.png" /></Frame> | <Frame width="256" height="auto" caption=""><img src="https://media-resource.spreading.io/5fa3f99cda659c8c9f2907cbb0242e6c/workspace86/fullScreenShare.png" /></Frame> |
+| <Frame width="400" height="auto" caption=""><img src="https://media-resource.spreading.io/5fa3f99cda659c8c9f2907cbb0242e6c/workspace86/conference_start_screen_share.png" /></Frame> | <Frame width="400" height="auto" caption=""><img src="https://media-resource.spreading.io/5fa3f99cda659c8c9f2907cbb0242e6c/workspace86/conference_watch_screen_share.png" /></Frame> | <Frame width="400" height="auto" caption=""><img src="https://media-resource.spreading.io/5fa3f99cda659c8c9f2907cbb0242e6c/workspace86/conference_watch_web_screenshare.png" /></Frame> | <Frame width="400" height="auto" caption=""><img src="https://media-resource.spreading.io/5fa3f99cda659c8c9f2907cbb0242e6c/workspace86/fullScreenShare.png" /></Frame> |
 
 
 ## Implementation
@@ -18,13 +18,13 @@ Screen sharing refers to the process of broadcasting the contents of one screen 
 
 Screen sharing is only supported in the gallery layout. To share your screen, you will need to set the <code>layout</code> inside the <code>ZegoUIKitPrebuiltCallConfig</code> to <code>Gallery</code> first.
 
-To decide whether to use the full&#45;screen mode by default during screen sharing, you will need to configure the <code>showNewScreenSharingViewInFullscreenMode</code> inside the <code>ZegoLayoutGalleryConfig</code>. Set it to <code>true</code> &#40;default setting&#41;, meaning that the shared screen will automatically be in full screen when the screen sharing starts.
+To decide whether to use the full-screen mode by default during screen sharing, you will need to configure the <code>showNewScreenSharingViewInFullscreenMode</code> inside the <code>ZegoLayoutGalleryConfig</code>. Set it to <code>true</code> (default setting), meaning that the shared screen will automatically be in full screen when the screen sharing starts.
 
-Meanwhile, the full&#45;screen mode button is customizable, you can decide the way how it shows. To set it, configure the <code>showScreenSharingFullscreenModeToggleButtonRules</code> inside the <code>ZegoLayoutGalleryConfig</code>:
+Meanwhile, the full-screen mode button is customizable, you can decide the way how it shows. To set it, configure the <code>showScreenSharingFullscreenModeToggleButtonRules</code> inside the <code>ZegoLayoutGalleryConfig</code>:
 
-* <code>showWhenScreenPressed</code>: &#40;default setting&#41; shows the full&#45;screen mode button when clicking the shared screen.
-* <code>alwaysShow</code>: always shows the full&#45;screen mode button.
-* <code>alwaysHide</code>: always hides the full&#45;screen mode button.
+* <code>showWhenScreenPressed</code>: (default setting) shows the full-screen mode button when clicking the shared screen.
+* <code>alwaysShow</code>: always shows the full-screen mode button.
+* <code>alwaysHide</code>: always hides the full-screen mode button.
 
 ### Add/customize the buttons
 
@@ -63,7 +63,7 @@ class CallPage extends StatelessWidget {
 }
 ```
 
-To customize the UI of the full&#45;screen mode button, configure the <code>foregroundBuilder</code>. To decide whether to show the shared screen in full&#45;screen mode, use the <code>controller.showScreenSharingViewInFullscreenMode</code> inside the custom <code>foregroundBuilder</code>.
+To customize the UI of the full-screen mode button, configure the <code>foregroundBuilder</code>. To decide whether to show the shared screen in full-screen mode, use the <code>controller.showScreenSharingViewInFullscreenMode</code> inside the custom <code>foregroundBuilder</code>.
 
 ```dart
 class CallPage extends StatefulWidget {
@@ -117,15 +117,15 @@ class _CallPageState extends State {
 The memory limit of the Broadcast Upload Extension is 50 MB, make sure the memory usage of the Extension for screen sharing does not exceed 50 MB.
 </Tip>
 
-1. Open your project in Xcode, and select **File &gt; New &gt; Target**.
+1. Open your project in Xcode, and select **File > New > Target**.
 
-<Frame width="256" height="auto" caption="">
+<Frame width="400" height="auto" caption="">
   <img src="https://media-resource.spreading.io/5fa3f99cda659c8c9f2907cbb0242e6c/workspace86/share_screen_create_extension_ios1.png" />
 </Frame>
 
 2. In the following window, select the **Broadcast Upload Extension**, and click **Next**.
 
-<Frame width="256" height="auto" caption="">
+<Frame width="400" height="auto" caption="">
   <img src="https://media-resource.spreading.io/5fa3f99cda659c8c9f2907cbb0242e6c/workspace86/share_screen_create_extension_ios.png" />
 </Frame>
 
@@ -133,20 +133,20 @@ The memory limit of the Broadcast Upload Extension is 50 MB, make sure the memor
 
 <Warning title="Warning">Don't need to check the **Include UI Extension** option.</Warning>
 
-<Frame width="256" height="auto" caption="">
+<Frame width="400" height="auto" caption="">
   <img src="https://media-resource.spreading.io/5fa3f99cda659c8c9f2907cbb0242e6c/workspace86/createScreenTarget.png" />
 </Frame>
 
 
 4. Set screen sharing target minimum support version. The minimum support version needs to be greater than or equal to 12. If your phone's system version is lower than this minimum support version, screen sharing function will not be available.
 
-<Frame width="256" height="auto" caption="">
+<Frame width="400" height="auto" caption="">
   <img src="https://media-resource.spreading.io/5fa3f99cda659c8c9f2907cbb0242e6c/workspace86/screen_share_target_set.jpg" />
 </Frame>
 
 5. After you created the Broadcast Upload Extension, you will see a folder for this Extension in your project with a structure similar to the following. This folder is used to store the implementation codes for the screen sharing feature:
 
-<Frame width="256" height="auto" caption="">
+<Frame width="400" height="auto" caption="">
   <img src="https://media-resource.spreading.io/5fa3f99cda659c8c9f2907cbb0242e6c/workspace86/screen_floder.png" />
 </Frame>
 
@@ -154,25 +154,25 @@ The memory limit of the Broadcast Upload Extension is 50 MB, make sure the memor
 
 * Run the <code>cd</code> command in the Terminal to navigate to your iOS project directory, and run the <code>pod install</code> to install the <code>ZegoExpressEngine</code> library.
 
-<Frame width="256" height="auto" caption="">
+<Frame width="400" height="auto" caption="">
   <img src="https://media-resource.spreading.io/5fa3f99cda659c8c9f2907cbb0242e6c/workspace86/flutter_ios_floder.png" />
 </Frame>
 
-* Click the **&#43;** button as shown in the following figure.
+* Click the **+** button as shown in the following figure.
 
-<Frame width="256" height="auto" caption="">
+<Frame width="400" height="auto" caption="">
   <img src="https://media-resource.spreading.io/5fa3f99cda659c8c9f2907cbb0242e6c/workspace86/cliick_add_button.png" />
 </Frame>
 
 * Select and add the <code>ZegoExpressEngine.xcframework</code>.
 
-<Frame width="256" height="auto" caption="">
+<Frame width="400" height="auto" caption="">
   <img src="https://media-resource.spreading.io/5fa3f99cda659c8c9f2907cbb0242e6c/workspace86/add_download_express.png" />
 </Frame>
 
 * Set Embed to <code>Do Not Embed</code>.
 
-<Frame width="256" height="auto" caption="">
+<Frame width="400" height="auto" caption="">
   <img src="https://media-resource.spreading.io/5fa3f99cda659c8c9f2907cbb0242e6c/workspace86/add_express.png" />
 </Frame>
 

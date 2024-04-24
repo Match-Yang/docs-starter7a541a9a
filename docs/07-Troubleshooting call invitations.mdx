@@ -1,10 +1,10 @@
 # Troubleshooting call invitations
 
-<Tip title="TIPS">It is possible that your issue has already been fixed in the old version. Before further troubleshooting, we strongly recommend that you upgrade [zego&#95;uikit&#95;prebuilt&#95;call](https://pub.dev/packages/zego_uikit_prebuilt_call), [zego&#95;uikit&#95;signaling&#95;plugin](https://pub.dev/packages/zego_uikit_signaling_plugin), and [zego&#95;uikit](https://pub.dev/packages/zego_uikit) to the latest version for testing. If you encounter any problems during the upgrade, please refer to our [migration guide](https://pub.dev/documentation/zego_uikit_prebuilt_call/latest/topics/Migration:%20from%203.x%20to%204.0-topic.html).</Tip>
+<Tip title="TIPS">It is possible that your issue has already been fixed in the old version. Before further troubleshooting, we strongly recommend that you upgrade [zego_uikit_prebuilt_call](https://pub.dev/packages/zego_uikit_prebuilt_call), [zego_uikit_signaling_plugin](https://pub.dev/packages/zego_uikit_signaling_plugin), and [zego_uikit](https://pub.dev/packages/zego_uikit) to the latest version for testing. If you encounter any problems during the upgrade, please refer to our [migration guide](https://pub.dev/documentation/zego_uikit_prebuilt_call/latest/topics/Migration:%20from%203.x%20to%204.0-topic.html).</Tip>
 
 If you encounter offline call issues, ***we recommend testing and ensuring that the online call function is working properly before troubleshooting the offline problem***. This usually shortens the time it takes to troubleshoot your issue.
 
-Below are common combinations of integration issues and phenomena. ***You can quickly try to self&#45;diagnose and locate the cause of the problem using this list.***
+Below are common combinations of integration issues and phenomena. ***You can quickly try to self-diagnose and locate the cause of the problem using this list.***
 
 ## Troubleshooting online calls
 
@@ -27,7 +27,7 @@ Please [Check if the NavigatorKey and useSystemCallingUI are correctly configure
 ### 3 First time working fine, but subsequent openings of the application cannot show invitation dialogs.
 
 
-The problem usually occurs because the "auto login" related logic in your app does not call <code>ZegoUIKitPrebuiltCallInvitationService&#40;&#41;.init</code> after the user successfully "auto login", resulting in a failure to log in to our sdk. Please refer to [Check if the init logic is handled correctly.](https://zegocloud.spreading.io/doc/callkit/Call%20Kit/main/Troubleshooting%20call%20invitations/4981e46f#h-check-if-the-init-logic-is-handled-correctly)
+The problem usually occurs because the "auto login" related logic in your app does not call <code>ZegoUIKitPrebuiltCallInvitationService().init</code> after the user successfully "auto login", resulting in a failure to log in to our sdk. Please refer to [Check if the init logic is handled correctly.](https://zegocloud.spreading.io/doc/callkit/Call%20Kit/main/Troubleshooting%20call%20invitations/4981e46f#h-check-if-the-init-logic-is-handled-correctly)
 
 ### 4 No sound during call
 
@@ -44,9 +44,9 @@ If all of the above configurations are correct, the issue should be resolved.
 ### 5 Call invitations limited to specific screens
 
 
-The issue is likely caused by calling the <code>ZegoUIKitPrebuiltCallInvitationService&#40;&#41;.init</code> method only on a specific screen, which prevents the call invitation notification from being received on other screens.
+The issue is likely caused by calling the <code>ZegoUIKitPrebuiltCallInvitationService().init</code> method only on a specific screen, which prevents the call invitation notification from being received on other screens.
 
-To avoid this issue, we recommend **calling the <code>ZegoUIKitPrebuiltCallInvitationService&#40;&#41;.init</code> method right after the user logs in** &#40;such as after clicking on "Sign in/Continue with Google/Continue with Apple" and receiving a successful callback&#41;, since the Call Kit SDK needs to start listening for incoming calls immediately after the app is initialized. Please also avoid making duplicate calls to this method.
+To avoid this issue, we recommend **calling the <code>ZegoUIKitPrebuiltCallInvitationService().init</code> method right after the user logs in** (such as after clicking on "Sign in/Continue with Google/Continue with Apple" and receiving a successful callback), since the Call Kit SDK needs to start listening for incoming calls immediately after the app is initialized. Please also avoid making duplicate calls to this method.
 
 Once you have confirmed that the timing of the call is correct, your app should be able to receive call invitations on all screens. **Please note that this issue can also cause offline calls to be unavailable.**
 
@@ -95,7 +95,7 @@ This is usually because your app triggers timed page navigation after it starts.
 ### 11 Users can still receive offline notifications after logging out of the app.
 
 
-After the user logs out of the APP, you should call <code>ZegoUIKitPrebuiltCallInvitationService&#40;&#41;.uninit&#40;&#41;</code>.
+After the user logs out of the APP, you should call <code>ZegoUIKitPrebuiltCallInvitationService().uninit()</code>.
 
 ```dart
 /// on App's user logout
@@ -114,7 +114,7 @@ void onUserLogout() {
 #### Step 1: Ensure that the latest package version is being used
 
 
-Please make sure that you are using the latest versions of both [zego&#95;uikit&#95;prebuilt&#95;call](https://pub.dev/packages/zego_uikit_prebuilt_call) and [zego&#95;uikit&#95;signaling&#95;plugin](https://pub.dev/packages/zego_uikit_signaling_plugin). Using outdated versions may cause bugs that prevent offline call functionality from working properly.
+Please make sure that you are using the latest versions of both [zego_uikit_prebuilt_call](https://pub.dev/packages/zego_uikit_prebuilt_call) and [zego_uikit_signaling_plugin](https://pub.dev/packages/zego_uikit_signaling_plugin). Using outdated versions may cause bugs that prevent offline call functionality from working properly.
 
 #### Step 2: Check if the app has necessary permissions enabled
 
@@ -124,14 +124,14 @@ After installation, some Android devices may block the app from displaying notif
 #### Step 3: Check if the callee has obtained the Push ID correctly
 
 
-When debugging from your IDE &#40;Android Studio/Xcode/VS Code&#41;, you can usually view ​​​​​​​&#8203;important information such as <code>push id</code> or <code>pushID</code> in your app's console logs. Make sure to check that the callee has obtained the Push ID correctly.
+When debugging from your IDE (Android Studio/Xcode/VS Code), you can usually view ​​​​​​​&#8203;important information such as <code>push id</code> or <code>pushID</code> in your app's console logs. Make sure to check that the callee has obtained the Push ID correctly.
 
 <Frame width="720" height="123" caption="">
   <img src="https://media-resource.spreading.io/5fa3f99cda659c8c9f2907cbb0242e6c/workspace86/2.jpeg" />
 </Frame>
 
 
-If you are having trouble obtaining a valid Push ID, it may be due to issues with your certificate configuration. We recommend reviewing the [Quick start &#40;with call invitation&#41;](https://www.zegocloud.com/doc/callkit/Call%20Kit/main/Quick%20start%20(with%20call%20invitation)/eb1d3c42)
+If you are having trouble obtaining a valid Push ID, it may be due to issues with your certificate configuration. We recommend reviewing the [Quick start (with call invitation)](https://www.zegocloud.com/doc/callkit/Call%20Kit/main/Quick%20start%20(with%20call%20invitation)/eb1d3c42)
 
 documentation again to ensure that your certificate configuration on the console is correct. Once configured correctly, you should see something similar to the following:
 
@@ -140,9 +140,9 @@ documentation again to ensure that your certificate configuration on the console
 </Frame>
 
 
-If you are still unable to obtain a Push ID after configuring your certificate on [ZEGOCLOUD's Admin Console](https://console.zegocloud.com), please double&#45;check the Bundle ID of your certificate on iOS and the <code>package&#95;name</code> in the <code>google&#45;service.json</code> file on Android to ensure that they match the package name of your project.
+If you are still unable to obtain a Push ID after configuring your certificate on [ZEGOCLOUD's Admin Console](https://console.zegocloud.com), please double-check the Bundle ID of your certificate on iOS and the <code>package_name</code> in the <code>google-service.json</code> file on Android to ensure that they match the package name of your project.
 
-For iOS projects, the <code>Bundle ID</code> of your certificate must match the Bundle Identifier of your Xcode project. For Android projects, the <code>package&#95;name</code> in the <code>google&#45;service.json</code> file must match the <code>package</code> attribute in the <code>AndroidManifest.xml</code> file of your project.
+For iOS projects, the <code>Bundle ID</code> of your certificate must match the Bundle Identifier of your Xcode project. For Android projects, the <code>package_name</code> in the <code>google-service.json</code> file must match the <code>package</code> attribute in the <code>AndroidManifest.xml</code> file of your project.
 
 Once you have confirmed that your certificate is properly configured and the project information matches the certificate, you should be able to obtain the Push ID correctly.
 
@@ -151,7 +151,7 @@ Once you have confirmed that your certificate is properly configured and the pro
 
 To check if you can receive debug messages from the ZEGOCLOUD console, please log in to [ZEGOCLOUD's Admin Console](https://console.zegocloud.com)
 
-and navigate to **Projects Management &gt; Your Project &gt; Service Management &gt; In&#45;app Chat** page. Here, you will find a <code>Push Debug</code> button. Click on this button and fill in the example information provided in the popup window. Once the information is filled in, click the **Test** button to complete the process.
+and navigate to **Projects Management > Your Project > Service Management > In-app Chat** page. Here, you will find a <code>Push Debug</code> button. Click on this button and fill in the example information provided in the popup window. Once the information is filled in, click the **Test** button to complete the process.
 
 <Frame width="720" height="345" caption="">
   <img src="https://media-resource.spreading.io/5fa3f99cda659c8c9f2907cbb0242e6c/workspace86/234791990-76dd72d1-2655-41fc-909f-96236ad182e4.png" />
@@ -174,12 +174,12 @@ The <code>Manufacturer Push Servers</code> error may be caused by the following:
 #### Check if the latest package version is being used
 
 
-It is possible that your issue has already been fixed in the old version. Before further troubleshooting, we strongly recommend that you upgrade [zego&#95;uikit&#95;prebuilt&#95;call](https://pub.dev/packages/zego_uikit_prebuilt_call), [zego&#95;uikit&#95;signaling&#95;plugin](https://pub.dev/packages/zego_uikit_signaling_plugin), and [zego&#95;uikit](https://pub.dev/packages/zego_uikit) to the latest version for testing. If you encounter any problems during the upgrade, please refer to our [migration guide](https://pub.dev/documentation/zego_uikit_prebuilt_call/latest/topics/Migration:%20from%203.x%20to%204.0-topic.html).
+It is possible that your issue has already been fixed in the old version. Before further troubleshooting, we strongly recommend that you upgrade [zego_uikit_prebuilt_call](https://pub.dev/packages/zego_uikit_prebuilt_call), [zego_uikit_signaling_plugin](https://pub.dev/packages/zego_uikit_signaling_plugin), and [zego_uikit](https://pub.dev/packages/zego_uikit) to the latest version for testing. If you encounter any problems during the upgrade, please refer to our [migration guide](https://pub.dev/documentation/zego_uikit_prebuilt_call/latest/topics/Migration:%20from%203.x%20to%204.0-topic.html).
 
 #### Check if there is any error on the calling side.
 
 
-Please listen and check the [onPressed](https://pub.dev/documentation/zego_uikit_prebuilt_call/latest/zego_uikit_prebuilt_call/ZegoSendCallInvitationButton/onPressed.html) callback of the [ZegoSendCallInvitationButton](https://pub.dev/documentation/zego_uikit_prebuilt_call/latest/zego_uikit_prebuilt_call/ZegoSendCallInvitationButton-class.html) on the caller side. The callback type is <code>void onPressed&#40;String code, String message, List&lt;String&gt; errorInvitees&#41;</code>. Please check the error code and message, and check if the <code>errorInvitees</code> list is empty.
+Please listen and check the [onPressed](https://pub.dev/documentation/zego_uikit_prebuilt_call/latest/zego_uikit_prebuilt_call/ZegoSendCallInvitationButton/onPressed.html) callback of the [ZegoSendCallInvitationButton](https://pub.dev/documentation/zego_uikit_prebuilt_call/latest/zego_uikit_prebuilt_call/ZegoSendCallInvitationButton-class.html) on the caller side. The callback type is <code>void onPressed(String code, String message, List\<String> errorInvitees)</code>. Please check the error code and message, and check if the <code>errorInvitees</code> list is empty.
 
 Please refer to [this link](https://docs.zegocloud.com/article/13792) for error codes' details.
 
@@ -194,15 +194,15 @@ Here are the permissions that an Offline Push APP needs on Xiaomi devices for re
 
 |                                                                                                                                                                         |                                                                                                                                                                         |                                                                                                                                                                         |
 | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| <Frame width="256" height="auto" caption=""><img src="https://media-resource.spreading.io/5fa3f99cda659c8c9f2907cbb0242e6c/workspace86/miui12_settings1.jpg" /></Frame> | <Frame width="256" height="auto" caption=""><img src="https://media-resource.spreading.io/5fa3f99cda659c8c9f2907cbb0242e6c/workspace86/miui12_settings2.jpg" /></Frame> | <Frame width="256" height="auto" caption=""><img src="https://media-resource.spreading.io/5fa3f99cda659c8c9f2907cbb0242e6c/workspace86/miui12_settings3.jpg" /></Frame> |
+| <Frame width="400" height="auto" caption=""><img src="https://media-resource.spreading.io/5fa3f99cda659c8c9f2907cbb0242e6c/workspace86/miui12_settings1.jpg" /></Frame> | <Frame width="400" height="auto" caption=""><img src="https://media-resource.spreading.io/5fa3f99cda659c8c9f2907cbb0242e6c/workspace86/miui12_settings2.jpg" /></Frame> | <Frame width="400" height="auto" caption=""><img src="https://media-resource.spreading.io/5fa3f99cda659c8c9f2907cbb0242e6c/workspace86/miui12_settings3.jpg" /></Frame> |
 
 
 The permissions that usually need to be checked are:
 
 * Notification: Switch to Enable
 * Show notification on locked screen: Switch to Enable
-* Display pop&#45;up windows while running in the background: Switch to Enable
-* Display pop&#45;up window: Switch to Enable
+* Display pop-up windows while running in the background: Switch to Enable
+* Display pop-up window: Switch to Enable
 * Battery saver: No restrictions
 * Background data: Switch to Enable
 
@@ -211,9 +211,9 @@ The permissions that usually need to be checked are:
 #### Check the configuration of AndroidManifest.xml.
 
 
-Open the file <code>your&#95;project/app/src/main/AndroidManifest.xml</code>, make sure the following permissions are added.
+Open the file <code>your_project/app/src/main/AndroidManifest.xml</code>, make sure the following permissions are added.
 
-Please pay attention and check item by item, especially the permissions related to notifications such as <code>SYSTEM&#95;ALERT&#95;WINDOW</code>, <code>POST&#95;NOTIFICATIONS</code>, <code>ACCESS&#95;NOTIFICATION&#95;POLICY</code>, etc.
+Please pay attention and check item by item, especially the permissions related to notifications such as <code>SYSTEM_ALERT_WINDOW</code>, <code>POST_NOTIFICATIONS</code>, <code>ACCESS_NOTIFICATION_POLICY</code>, etc.
 
 ```xml
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -238,8 +238,8 @@ Please pay attention and check item by item, especially the permissions related 
 
 1. Please make sure that you call the following two methods:
 
-* ZegoUIKitPrebuiltCallInvitationService&#40;&#41;.setNavigatorKey&#40;navigatorKey&#41;;
-* ZegoUIKitPrebuiltCallInvitationService&#40;&#41;.useSystemCallingUI
+* ZegoUIKitPrebuiltCallInvitationService().setNavigatorKey(navigatorKey);
+* ZegoUIKitPrebuiltCallInvitationService().useSystemCallingUI
 
 The complete code is as follows:
 
@@ -284,7 +284,7 @@ class MyAppState extends State {
 
 #### Check if the init logic is handled correctly.
 
-You need to ensure that every time the app is launched, whether the user logs in automatically or manually registers and logs in, you should make sure to call <code>ZegoUIKitPrebuiltCallInvitationService&#40;&#41;.init</code>.
+You need to ensure that every time the app is launched, whether the user logs in automatically or manually registers and logs in, you should make sure to call <code>ZegoUIKitPrebuiltCallInvitationService().init</code>.
 
 ```dart
 /// on App's user login
